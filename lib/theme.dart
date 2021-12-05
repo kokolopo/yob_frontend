@@ -6,15 +6,15 @@ double defaultMargin = 30.0;
 Color primaryColor = const Color(0xff27a298);
 Color secondaryColor = const Color(0xffff9900);
 Color alertColor = const Color(0xffED6363);
-Color priceColor = Color(0xff2C96F1);
-Color backgroundColor1 = Color(0xff1F1D2B);
-Color backgroundColor2 = Color(0xff2B2937);
-Color backgroundColor3 = Color(0xff242231);
-Color backgroundColor4 = Color(0xff252836);
-Color primaryTextColor = Color(0XFF000000);
-Color subtitleColorText = Color(0xff504F5E);
-Color secondaryTextColor = Color(0xff999999);
-Color blackColor = Color(0xff2E2E2E);
+Color priceColor = const Color(0xff2C96F1);
+Color backgroundColor1 = const Color(0xff1F1D2B);
+Color backgroundColor2 = const Color(0xff2B2937);
+Color backgroundColor3 = const Color(0xff242231);
+Color backgroundColor4 = const Color(0xff252836);
+Color primaryTextColor = const Color(0XFF000000);
+Color subtitleColorText = const Color(0xff504F5E);
+Color secondaryTextColor = const Color(0xff999999);
+Color blackColor = const Color(0xff2E2E2E);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
   color: primaryTextColor,

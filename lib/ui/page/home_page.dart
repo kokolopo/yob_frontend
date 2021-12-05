@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yob/ui/page/widget/invitation_card.dart';
-import 'package:yob/ui/page/widget/place_card.dart';
+import 'package:yob/ui/widget/invitation_card.dart';
+import 'package:yob/ui/widget/place_card.dart';
 
 import '../../theme.dart';
 

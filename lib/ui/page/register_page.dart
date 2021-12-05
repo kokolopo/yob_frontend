@@ -56,7 +56,7 @@ class _RegisPageState extends State<RegisPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(
@@ -69,7 +69,7 @@ class _RegisPageState extends State<RegisPage> {
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.all(15),
+                          margin: const EdgeInsets.all(15),
                           child: const Text(
                             'Registrasi',
                             style: TextStyle(
@@ -77,7 +77,7 @@ class _RegisPageState extends State<RegisPage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
+                          margin: const EdgeInsets.symmetric(horizontal: 15),
                           child: Column(
                             children: [
                               _detailFiled('Username', const Icon(Icons.person),
@@ -103,7 +103,7 @@ class _RegisPageState extends State<RegisPage> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         RoundedButton(
@@ -152,11 +152,11 @@ class _RegisPageState extends State<RegisPage> {
 
   Widget footer() {
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.only(top: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             'Already have an account? ',
             // style: subtitleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
           ),
@@ -164,10 +164,10 @@ class _RegisPageState extends State<RegisPage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RegisPage()),
+                MaterialPageRoute(builder: (context) => const RegisPage()),
               );
             },
-            child: Text(
+            child: const Text(
               'Sign In',
               // style: purpleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
             ),
@@ -191,7 +191,7 @@ class RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30),
+      margin: const EdgeInsets.symmetric(vertical: 30),
       width: size.width * 0.8,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(50),
@@ -204,13 +204,13 @@ class RoundedButton extends StatelessWidget {
     return ElevatedButton(
       child: Text(
         text,
-        style: TextStyle(color: Colors.white, fontSize: 16),
+        style: const TextStyle(color: Colors.white, fontSize: 16),
       ),
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-          primary: Color(0XFFFF9900),
-          padding: EdgeInsets.symmetric(vertical: 20),
-          textStyle: TextStyle(
+          primary: const Color(0XFFFF9900),
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          textStyle: const TextStyle(
               color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
     );
   }

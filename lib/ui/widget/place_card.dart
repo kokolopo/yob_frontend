@@ -32,7 +32,7 @@ class _PlaceCardState extends State<PlaceCard> {
               ),
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.location_on,
                     color: Colors.grey,
                   ),
@@ -42,7 +42,7 @@ class _PlaceCardState extends State<PlaceCard> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Text(

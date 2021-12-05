@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.all(15),
+                          margin: const EdgeInsets.all(15),
                           child: const Text(
                             'Masuk',
                             style: TextStyle(
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 15),
+                          margin: const EdgeInsets.symmetric(horizontal: 15),
                           child: Column(
                             children: [
                               _detailFiled(
@@ -95,10 +95,10 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(''),
+                                  const Text(''),
                                   InkWell(
                                     onTap: () {},
-                                    child: Text(
+                                    child: const Text(
                                       'Lupa Sandi',
                                       style: TextStyle(color: Colors.blue),
                                     ),
@@ -108,35 +108,39 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 30),
+                          margin: const EdgeInsets.symmetric(vertical: 30),
                           width: size.width * 0.8,
                           child: ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: ElevatedButton(
-                                child: Text(
-                                  'Masuk',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 16),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MainPage()),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    primary: Color(0XFFFF9900),
-                                    padding: EdgeInsets.symmetric(vertical: 20),
-                                    textStyle: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500)),
-                              )),
+                            borderRadius: BorderRadius.circular(50),
+                            child: ElevatedButton(
+                              child: const Text(
+                                'Masuk',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const MainPage(),
+                                  ),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: const Color(0XFFFF9900),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 20),
+                                textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
                         )
                       ],
                     ),
@@ -180,11 +184,11 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget footer() {
     return Container(
-      margin: EdgeInsets.only(top: 30),
+      margin: const EdgeInsets.only(top: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             'Belum memiliki akun? ',
             // style: subtitleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
           ),
@@ -192,10 +196,10 @@ class _LoginPageState extends State<LoginPage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => RegisPage()),
+                MaterialPageRoute(builder: (context) => const RegisPage()),
               );
             },
-            child: Text(
+            child: const Text(
               'Daftar',
               // style: purpleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
             ),
@@ -217,7 +221,7 @@ class RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30),
+      margin: const EdgeInsets.symmetric(vertical: 30),
       width: size.width * 0.8,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(50),
@@ -230,14 +234,15 @@ class RoundedButton extends StatelessWidget {
     return ElevatedButton(
       child: Text(
         text,
-        style: TextStyle(color: Colors.white, fontSize: 16),
+        style: const TextStyle(color: Colors.white, fontSize: 16),
       ),
       onPressed: () {},
       style: ElevatedButton.styleFrom(
-          primary: Color(0XFFFF9900),
-          padding: EdgeInsets.symmetric(vertical: 20),
-          textStyle: TextStyle(
-              color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
+        primary: const Color(0XFFFF9900),
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        textStyle: const TextStyle(
+            color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
+      ),
     );
   }
 }
