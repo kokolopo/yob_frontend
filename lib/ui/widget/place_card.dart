@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:yob/theme.dart';
+part of 'widgets.dart';
 
 class PlaceCard extends StatefulWidget {
   const PlaceCard({Key? key}) : super(key: key);

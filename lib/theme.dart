@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animations/animations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 double defaultMargin = 30.0;
@@ -15,6 +16,31 @@ Color primaryTextColor = const Color(0XFF000000);
 Color subtitleColorText = const Color(0xff504F5E);
 Color secondaryTextColor = const Color(0xff999999);
 Color blackColor = const Color(0xff2E2E2E);
+
+ThemeData get themeData => ThemeData(
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      primaryColor: primaryColor,
+      fontFamily: 'NunitoSans',
+      scaffoldBackgroundColor: Colors.white,
+      colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colors.deepOrange,
+        accentColor: secondaryColor,
+        brightness: Brightness.light,
+      ),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: SharedAxisPageTransitionsBuilder(
+            transitionType: SharedAxisTransitionType.horizontal,
+          ),
+          TargetPlatform.iOS: SharedAxisPageTransitionsBuilder(
+            transitionType: SharedAxisTransitionType.horizontal,
+          ),
+        },
+      ),
+      textTheme: GoogleFonts.poppinsTextTheme().apply(
+        bodyColor: Colors.black87,
+      ),
+    );
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
   color: primaryTextColor,

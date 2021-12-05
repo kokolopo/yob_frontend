@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../../theme.dart';
+part of 'widgets.dart';
 
 class InvitationCars extends StatelessWidget {
   const InvitationCars(
