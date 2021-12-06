@@ -10,3 +10,4 @@ part 'text_widget.dart';
 part 'invitation_card.dart';
 part 'input_field.dart';
 part 'icon_app.dart';
+part 'loading_widget.dart';

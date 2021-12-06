@@ -1,11 +1,11 @@
 part of 'widgets.dart';
 
-Widget iconApp() {
+Widget iconApp({double? size}) {
   return ClipRRect(
-    borderRadius: BorderRadius.circular(50),
+    borderRadius: BorderRadius.circular(size ?? 50),
     child: Container(
-      width: 160.w,
-      height: 160.w,
+      width: size ?? 160.w,
+      height: size ?? 160.w,
       color: primaryColor,
       child: Image.asset('assets/icons/yob_logo.png'),
     ),

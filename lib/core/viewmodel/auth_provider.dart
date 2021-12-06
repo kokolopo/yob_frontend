@@ -30,5 +30,4 @@ class AuthProvider with ChangeNotifier {
     // Do somethings
   }
 
-
 }
