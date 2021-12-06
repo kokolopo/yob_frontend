@@ -6,6 +6,7 @@ class AuthProvider with ChangeNotifier {
   //* ----------------------------
 
   // Controller
+  TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController pass = TextEditingController();
 
@@ -13,6 +14,10 @@ class AuthProvider with ChangeNotifier {
   //* Function field
   //* ----------------------------
   void doLogin() {
+    // Do somethings
+  }
+
+  void doRegister() {
     // Do somethings
   }
 

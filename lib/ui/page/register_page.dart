@@ -1,217 +1,112 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yob/core/viewmodel/auth_provider.dart';
+import 'package:yob/theme.dart';
+import 'package:yob/ui/widget/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RegisPage extends StatefulWidget {
-  const RegisPage({Key? key}) : super(key: key);
-
-  @override
-  _RegisPageState createState() => _RegisPageState();
-}
-
-class _RegisPageState extends State<RegisPage> {
-  final TextEditingController _pass = TextEditingController();
-  final TextEditingController _noTlp = TextEditingController();
-
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({ Key? key }) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0XFF27A797),
-              Color(0XFF0A81AB),
-            ]),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 55),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Container(
-                            width: 80,
-                            height: 80,
-                            color: Colors.blue,
-                            child: Image.asset(
-                              'assets/icons/yob_logo.png',
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Yuk Olahraga Bareng!',
-                          style: TextStyle(color: Colors.white, fontSize: 16),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.all(15),
-                          child: const Text(
-                            'Registrasi',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Column(
-                            children: [
-                              _detailFiled('Username', const Icon(Icons.person),
-                                  TextInputType.name, _noTlp, false),
-                              _detailFiled(
-                                  'No. Telpon',
-                                  const Icon(Icons.phone),
-                                  TextInputType.name,
-                                  _noTlp,
-                                  false),
-                              _detailFiled(
-                                  'Password',
-                                  const Icon(Icons.password),
-                                  TextInputType.name,
-                                  _pass,
-                                  true),
-                              _detailFiled(
-                                  'Lokasi',
-                                  const Icon(Icons.location_on),
-                                  TextInputType.name,
-                                  _noTlp,
-                                  false),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        RoundedButton(
-                          text: "Daftar",
-                          press: () {},
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                // footer()
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Container _detailFiled(String tittle, Icon icon, TextInputType keyType,
-      TextEditingController controller, bool isPassword) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.symmetric(vertical: 15),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.blueGrey),
-          borderRadius: BorderRadius.circular(13)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextField(
-            controller: controller,
-            obscureText: isPassword,
-            decoration: InputDecoration(
-              hintText: tittle,
-              suffixIcon: icon,
-              border: InputBorder.none,
-              contentPadding: const EdgeInsets.only(top: 15, left: 8),
-            ),
-            keyboardType: keyType,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget footer() {
-    return Container(
-      margin: const EdgeInsets.only(top: 30),
-      child: Row(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
-            'Already have an account? ',
-            // style: subtitleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
+          iconApp(),
+          textFormat(
+            "Yuk Olahraga Bareng!",
+            30.sp,
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const RegisPage()),
-              );
-            },
-            child: const Text(
-              'Sign In',
-              // style: purpleTextStyle.copyWith(fontSize: 12, fontWeight: medium),
-            ),
-          )
+          SizedBox(height: 54.h),
+          body(),
         ],
       ),
     );
   }
-}
 
-class RoundedButton extends StatelessWidget {
-  final String text;
-  final Function press;
-  const RoundedButton({
-    Key? key,
-    required this.text,
-    required this.press,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 30),
-      width: size.width * 0.8,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(50),
-        child: newElevatedButton(),
+  Widget body() {
+    return Card(
+      elevation: 8,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
       ),
-    );
-  }
-
-  Widget newElevatedButton() {
-    return ElevatedButton(
-      child: Text(
-        text,
-        style: const TextStyle(color: Colors.white, fontSize: 16),
-      ),
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-          primary: const Color(0XFFFF9900),
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          textStyle: const TextStyle(
-              color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
+      margin: EdgeInsets.symmetric(horizontal: 32.w),
+      child: Consumer<AuthProvider>(builder: (context, viewmodel, _) {
+        return Column(
+          children: [
+            SizedBox(height: 32.h),
+            textFormat(
+              "Pendaftaran Pengguna Baru",
+              32.sp,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(height: 32.h),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 32.w,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  InputField(
+                    viewmodel.name,
+                    hint: "Nama Lengkap",
+                    prefixIcon: Icon(Icons.person, color: secondaryColor),
+                    maxInput: 30,
+                  ),
+                  InputField(
+                    viewmodel.phone,
+                    hint: "Nomor Telepon",
+                    inputType: TextInputType.phone,
+                    prefixIcon: Icon(Icons.phone, color: secondaryColor),
+                    maxInput: 13,
+                  ),
+                  InputField(
+                    viewmodel.pass,
+                    hint: "Password",
+                    inputType: TextInputType.visiblePassword,
+                    prefixIcon: Icon(Icons.password, color: secondaryColor),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/login',
+                      );
+                    },
+                    child: textFormat(
+                      "Sudah punya akun?",
+                      28.sp,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 32.h),
+            ElevatedButton(
+              child: textFormat(
+                "Daftar",
+                28.sp,
+                fontColor: Colors.white,
+              ),
+              onPressed: viewmodel.doRegister,
+              style: ElevatedButton.styleFrom(
+                primary: primaryColor,
+                shape: const StadiumBorder(side: BorderSide.none),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 132.w,
+                  vertical: 16.h,
+                ),
+              ),
+            ),
+            SizedBox(height: 32.h),
+          ],
+        );
+      }),
     );
   }
 }

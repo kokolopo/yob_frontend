@@ -5,6 +5,7 @@ import 'package:yob/theme.dart';
 import 'package:yob/ui/page/home_page.dart';
 import 'package:yob/ui/page/login_page.dart';
 import 'package:provider/provider.dart';
+import 'package:yob/ui/page/register_page.dart';
 import 'package:yob/ui/page/splash_page.dart';
 
 void main() {
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/splash': (context) => const SplashPage(),
             '/login': (context) => const LoginPage(),
+            '/register': (context) => const RegisterPage(),
             '/home': (context) => const HomePage(),
           },
         ),

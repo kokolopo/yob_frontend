@@ -56,6 +56,7 @@ class LoginPage extends StatelessWidget {
                   InputField(
                     viewmodel.phone,
                     hint: "Nomor Telepon",
+                    inputType: TextInputType.phone,
                     prefixIcon: Icon(Icons.phone, color: secondaryColor),
                     maxInput: 13,
                   ),
