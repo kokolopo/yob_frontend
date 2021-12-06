@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yob/core/viewmodel/auth_provider.dart';
 import 'package:yob/theme.dart';
-import 'package:yob/ui/page/main_page.dart';
-import 'package:yob/ui/page/register_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yob/ui/widget/widgets.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _pass = TextEditingController();
-  final TextEditingController _noTlp = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,108 +45,66 @@ class _LoginPageState extends State<LoginPage> {
         borderRadius: BorderRadius.circular(16),
       ),
       margin: EdgeInsets.symmetric(horizontal: 32.w),
-      child: Column(
-        children: [
-          SizedBox(height: 32.h),
-          textFormat(
-            "Selamat Datang Kembali!",
-            32.sp,
-            fontWeight: FontWeight.bold,
-          ),
-          SizedBox(height: 16.h),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 32.w,
+      child: Consumer<AuthProvider>(builder: (context, viewmodel, _) {
+        return Column(
+          children: [
+            SizedBox(height: 32.h),
+            textFormat(
+              "Selamat Datang Kembali!",
+              32.sp,
+              fontWeight: FontWeight.bold,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                _detailFiled(
-                  'No. Telpon',
-                  Icon(Icons.person, color: secondaryColor),
-                  TextInputType.name,
-                  _noTlp,
-                  false,
-                ),
-                _detailFiled(
-                  'Sandi',
-                  Icon(Icons.password, color: secondaryColor),
-                  TextInputType.visiblePassword,
-                  _pass,
-                  true,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: textFormat(
-                    "Lupa kata sandi?",
-                    28.sp,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 32.h),
-          ElevatedButton(
-            child: textFormat(
-              "Masuk",
-              28.sp,
-              fontColor: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MainPage(),
-                ),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              primary: primaryColor,
+            SizedBox(height: 32.h),
+            Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: 96.w,
-                vertical: 16.h,
+                horizontal: 32.w,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  InputField(
+                    viewmodel.phone,
+                    hint: "Nomor Telepon",
+                    prefixIcon: Icon(Icons.phone, color: secondaryColor),
+                    maxInput: 13,
+                  ),
+                  InputField(
+                    viewmodel.pass,
+                    hint: "Password",
+                    inputType: TextInputType.visiblePassword,
+                    prefixIcon: Icon(Icons.password, color: secondaryColor),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: textFormat(
+                      "Lupa kata sandi?",
+                      28.sp,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          SizedBox(height: 32.h),
-        ],
-      ),
-    );
-  }
-
-  Container _detailFiled(
-    String tittle,
-    Icon icon,
-    TextInputType keyType,
-    TextEditingController controller,
-    bool isPassword,
-  ) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 18.h),
-      decoration: BoxDecoration(
-        border: Border.all(color: primaryColor),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextField(
-            controller: controller,
-            obscureText: isPassword,
-            decoration: InputDecoration(
-              hintText: tittle,
-              suffixIcon: icon,
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 16.w,
-                vertical: 18.h,
+            SizedBox(height: 32.h),
+            ElevatedButton(
+              child: textFormat(
+                "Masuk",
+                28.sp,
+                fontColor: Colors.white,
+              ),
+              onPressed: viewmodel.doLogin,
+              style: ElevatedButton.styleFrom(
+                primary: primaryColor,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 96.w,
+                  vertical: 16.h,
+                ),
               ),
             ),
-            keyboardType: keyType,
-          ),
-        ],
-      ),
+            SizedBox(height: 32.h),
+          ],
+        );
+      }),
     );
   }
 
@@ -167,20 +117,17 @@ class _LoginPageState extends State<LoginPage> {
           30.sp,
           fontWeight: FontWeight.normal,
         ),
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const RegisPage()),
-            );
-          },
-          child: textFormat(
-            "Daftar",
-            32.sp,
-            fontColor: primaryColor,
-            fontWeight: FontWeight.bold,
-          ),
-        )
+        Consumer<AuthProvider>(builder: (context, viewmodel, _) {
+          return GestureDetector(
+            onTap: viewmodel.toRegister,
+            child: textFormat(
+              "Daftar",
+              32.sp,
+              fontColor: primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        })
       ],
     );
   }

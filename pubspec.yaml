@@ -34,6 +34,8 @@ dependencies:
   google_fonts: ^2.1.0
   flutter_screenutil: ^5.0.1
   animations: ^2.0.2
+  material_design_icons_flutter: ^5.0.6595
+  provider: ^6.0.1
 
   flutter:
     sdk: flutter
