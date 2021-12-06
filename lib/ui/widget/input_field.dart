@@ -50,9 +50,6 @@ class _InputFieldState extends State<InputField> {
       ),
       obscureText:
           (widget.inputType == TextInputType.visiblePassword) ? isObscureText : false,
-      onChanged: (value) {
-        
-      },
       decoration: InputDecoration(
         filled: true,
         fillColor: inputBackgroundColor,
