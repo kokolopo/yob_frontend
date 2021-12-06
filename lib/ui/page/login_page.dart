@@ -16,15 +16,7 @@ class LoginPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              width: 160.w,
-              height: 160.w,
-              color: primaryColor,
-              child: Image.asset('assets/icons/yob_logo.png'),
-            ),
-          ),
+          iconApp(),
           textFormat(
             "Yuk Olahraga Bareng!",
             30.sp,
@@ -75,7 +67,7 @@ class LoginPage extends StatelessWidget {
                     prefixIcon: Icon(Icons.password, color: secondaryColor),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: viewmodel.toForgetPassword,
                     child: textFormat(
                       "Lupa kata sandi?",
                       28.sp,
