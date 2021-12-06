@@ -66,7 +66,12 @@ class LoginPage extends StatelessWidget {
                     prefixIcon: Icon(Icons.password, color: secondaryColor),
                   ),
                   InkWell(
-                    onTap: viewmodel.toForgetPassword,
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/register',
+                      );
+                    },
                     child: textFormat(
                       "Lupa kata sandi?",
                       28.sp,
@@ -86,8 +91,9 @@ class LoginPage extends StatelessWidget {
               onPressed: viewmodel.doLogin,
               style: ElevatedButton.styleFrom(
                 primary: primaryColor,
+                shape: const StadiumBorder(side: BorderSide.none),
                 padding: EdgeInsets.symmetric(
-                  horizontal: 96.w,
+                  horizontal: 132.w,
                   vertical: 16.h,
                 ),
               ),
@@ -110,7 +116,12 @@ class LoginPage extends StatelessWidget {
         ),
         Consumer<AuthProvider>(builder: (context, viewmodel, _) {
           return GestureDetector(
-            onTap: viewmodel.toRegister,
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                '/register',
+              );
+            },
             child: textFormat(
               "Daftar",
               32.sp,
